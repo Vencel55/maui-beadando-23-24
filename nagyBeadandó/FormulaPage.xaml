@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="nagyBeadandó.FormulaPage"
+             Title="FormulaPage">
+    
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Text="Weather" BackgroundColor="Black" Command="{Binding WeatherCommand}"></Button>
+            <Button Grid.Row="0" Grid.Column="1" Text="F1" BackgroundColor="Black" Command="{Binding FormulaCommand}"></Button>
+            <Button Grid.Row="0" Grid.Column="2" Text="Gastronomy" BackgroundColor="Black" Command="{Binding GastronomyCommand}"></Button>
+        </Grid>
+
+        <ListView Grid.Row="1" ItemsSource="{Binding Seasons}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Season}" Command="{Binding SelectCommand}" CommandParameter="{Binding}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</ContentPage>

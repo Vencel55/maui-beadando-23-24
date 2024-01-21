@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="nagyBeadandó.MainPage"
+             Title="This is the weather page">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Text="Weather" BackgroundColor="Black" Command="{Binding WeatherCommand}"></Button>
+            <Button Grid.Row="0" Grid.Column="1" Text="F1" BackgroundColor="Black" Command="{Binding FormulaCommand}"></Button>
+            <Button Grid.Row="0" Grid.Column="2" Text="Gastronomy" BackgroundColor="Black" Command="{Binding GastronomyCommand}"></Button>
+        </Grid>
+
+        <!-- Header -->
+        <Frame Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Select a City!" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" TextColor="Black" FontSize="16"/>
+                <Entry Grid.Row="1" Text="{Binding CityFilter, Mode=TwoWay}" ReturnCommand="{Binding SearchCommand}" />
+                <Button Text="Search" Grid.Row="1" Grid.Column="1" Command="{Binding SearchCommand}" />
+            </Grid>
+        </Frame>
+
+        <!-- Location Information -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Location Information" FontSize="20" FontAttributes="Bold" Margin="0,5,0,5" />
+
+                <Label Grid.Row="1" Grid.Column="0" Text="Name:" />
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding WeatherLocation.Name}" FontAttributes="Bold"/>
+
+                <Label Grid.Row="2" Grid.Column="0" Text="Region:" />
+                <Label Grid.Row="2" Grid.Column="1" Text="{Binding WeatherLocation.Region}"  FontAttributes="Bold"/>
+
+                <Label Grid.Row="3" Grid.Column="0" Text="Country:" />
+                <Label Grid.Row="3" Grid.Column="1" Text="{Binding WeatherLocation.Country}"  FontAttributes="Bold"/>
+        </Grid>
+
+        <!-- Weather Information -->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Text="Weather Information" FontSize="20" FontAttributes="Bold" Margin="0,5,0,5" />
+
+            <Label Grid.Row="1" Grid.Column="0" Text="Temperature in celsius:"/>
+            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Weather.temp_c}" FontAttributes="Bold"/>
+            <Label Grid.Row="1" Grid.Column="2" Text="Shows day condition:" />
+            <Label Grid.Row="1" Grid.Column="3" Text="{Binding Weather.is_day}" FontAttributes="Bold"/>
+
+            <Label Grid.Row="2" Grid.Column="0" Text="Maximum wind speed in kilometer per hour:" />
+            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Weather.wind_kph}" FontAttributes="Bold"/>
+            <Label Grid.Row="2" Grid.Column="2" Text="Wind direction as 16 point compass. e.g.: NSW:"/>
+            <Label Grid.Row="2" Grid.Column="3" Text="{Binding Weather.wind_dir}" FontAttributes="Bold"/>
+
+            <Label Grid.Row="3" Grid.Column="0" Text="Precipitation amount in millimeters:"/>
+            <Label Grid.Row="3" Grid.Column="1" Text="{Binding Weather.precip_mm}"  FontAttributes="Bold"/>
+            <Label Grid.Row="3" Grid.Column="2" Text="Humidity as percentage:"/>
+            <Label Grid.Row="3" Grid.Column="3" Text="{Binding Weather.humidity}"  FontAttributes="Bold"/>
+
+            <Label Grid.Row="4" Grid.Column="0" Text="Cloud cover as percentage:"/>
+            <Label Grid.Row="4" Grid.Column="1" Text="{Binding Weather.cloud}" FontAttributes="Bold"/>
+            <Label Grid.Row="4" Grid.Column="2" Text="Feels like temperature as celcius:"/>
+            <Label Grid.Row="4" Grid.Column="3" Text="{Binding Weather.feelslike_c}" FontAttributes="Bold"/>
+
+            <Label Grid.Row="5" Grid.Column="0" Text="Visibility in kilometer:"/>
+            <Label Grid.Row="5" Grid.Column="1" Text="{Binding Weather.vis_km}" FontAttributes="Bold"/>
+            <Label Grid.Row="5" Grid.Column="2" Text="UV Index:"/>
+            <Label Grid.Row="5" Grid.Column="3" Text="{Binding Weather.uv}" FontAttributes="Bold"/>
+
+            <Label Grid.Row="6" Grid.Column="0" Text="Sunrise local time:"/>
+            <Label Grid.Row="6" Grid.Column="1" Text="{Binding Astronomy.Sunrise}" FontAttributes="Bold"/>
+            <Label Grid.Row="6" Grid.Column="2" Text="Sunset local time:"/>
+            <Label Grid.Row="6" Grid.Column="3" Text="{Binding Astronomy.Sunset}" FontAttributes="Bold"/>
+
+            <Label Grid.Row="7" Grid.Column="0" Text="Moonrise local time:"/>
+            <Label Grid.Row="7" Grid.Column="1" Text="{Binding Astronomy.Moonrise}" FontAttributes="Bold"/>
+            <Label Grid.Row="7" Grid.Column="2" Text="Moonset local time:"/>
+            <Label Grid.Row="7" Grid.Column="3" Text="{Binding Astronomy.Moonset}" FontAttributes="Bold"/>
+
+            <Label Grid.Row="8" Grid.Column="0" Text="Moon phases:"/>
+            <Label Grid.Row="8" Grid.Column="1" Text="{Binding Astronomy.Moon_phase}" FontAttributes="Bold"/>
+            <Label Grid.Row="8" Grid.Column="2" Text="Moon illumination:"/>
+            <Label Grid.Row="8" Grid.Column="3" Text="{Binding Astronomy.Moon_illumination}" FontAttributes="Bold"/>
+        </Grid>
+    </Grid>
+
+</ContentPage>

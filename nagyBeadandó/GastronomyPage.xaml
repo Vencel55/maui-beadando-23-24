@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="nagyBeadandó.GastronomyPage"
+             Title="GastronomyPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Text="Weather" BackgroundColor="Black" Command="{Binding WeatherCommand}"></Button>
+            <Button Grid.Row="0" Grid.Column="1" Text="F1" BackgroundColor="Black" Command="{Binding FormulaCommand}"></Button>
+            <Button Grid.Row="0" Grid.Column="2" Text="Gastronomy" BackgroundColor="Black" Command="{Binding GastronomyCommand}"></Button>
+        </Grid>
+
+        <Frame Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Text="Type a food you want to search!" Grid.Row="0" TextColor="Black" FontSize="16"/>
+                <Entry Grid.Row="1" Text="{Binding QuerryFilter, Mode=TwoWay}" ReturnCommand="{Binding GastronomySearchCommand}" />
+
+                <Label Text="Type the cuisine of the recipes!" Grid.Row="2" TextColor="Black" FontSize="16"/>
+                <Entry Grid.Row="3" Text="{Binding DietFilter, Mode=TwoWay}" ReturnCommand="{Binding GastronomySearchCommand}" />
+
+                <Label Text="Type the diet(s) for which the recipes must be suitable!" Grid.Row="4"  TextColor="Black" FontSize="16"/>
+                <Entry Grid.Row="5" Text="{Binding CuisineFilter, Mode=TwoWay}" ReturnCommand="{Binding GastronomySearchCommand}" />
+
+                <Label Text="A comma-separated list of intolerances." Grid.Row="6" TextColor="Black" FontSize="16"/>
+                <Entry Grid.Row="7" Text="{Binding IntolerancesFilter, Mode=TwoWay}" ReturnCommand="{Binding GastronomySearchCommand}" />
+
+                <Label Text="A comma-separated list of ingredients that should/must be used in the recipes!" Grid.Row="8" TextColor="Black" FontSize="16"/>
+                <Entry Grid.Row="9" Text="{Binding IncludeIngredientsFilter, Mode=TwoWay}" ReturnCommand="{Binding GastronomySearchCommand}" />
+
+                <Button Text="Search" Grid.Row="10" Command="{Binding GastronomySearchCommand}" />
+            </Grid>
+        </Frame>
+
+        <ListView Grid.Row="3" ItemsSource="{Binding GastronomySearchResult}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Title}" Command="{Binding SelectCommand}" CommandParameter="{Binding}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+
+</ContentPage>
